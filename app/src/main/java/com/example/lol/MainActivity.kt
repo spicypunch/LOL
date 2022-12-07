@@ -20,10 +20,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getItem() {
-        Thread {
-            runOnUiThread {
 
-            }
-        }.start()
     }
 }
