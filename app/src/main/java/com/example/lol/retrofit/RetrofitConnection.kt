@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitConnection {
 
     companion object {
-        private const val BASE_URL = "https://kr.api.riotgames.com/"
+        private const val BASE_URL = "https://kr.api.riotgames.com/lol/"
         private var INSTANCE: Retrofit? = null
 
         fun getInstance(): Retrofit {
