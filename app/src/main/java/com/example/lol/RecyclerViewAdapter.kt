@@ -7,10 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lol.databinding.ItemViewBinding
 import com.example.lol.retrofit.LOLResponse.LOLResponseItem
 
-class RecyclerViewAdapter(private val list: MutableList<LOLResponseItem>) :
+class RecyclerViewAdapter() :
     RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
-//    private val list = mutableListOf<LOLResponseItem>()
+    private val list = mutableListOf<LOLResponseItem>()
+
+    fun updateList(items: MutableList<LOLResponseItem>) {
+        list.clear()
+        list.addAll(items)
+    }
 
     class MyViewHolder(binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
         val champName = binding.champName
