@@ -7,8 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lol.databinding.ItemViewBinding
 import com.example.lol.retrofit.LOLResponse.LOLResponseItem
 
-class RecyclerViewAdapter(private val List: MutableList<LOLResponseItem>) :
+class RecyclerViewAdapter() :
     RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+
+    private val list = mutableListOf<LOLResponseItem>()
+
+    fun updateList(items: MutableList<LOLResponseItem>) {
+        list.clear()
+        list.addAll(items)
+    }
 
     class MyViewHolder(binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
         val champName = binding.champName
@@ -23,13 +30,13 @@ class RecyclerViewAdapter(private val List: MutableList<LOLResponseItem>) :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val data = List[position]
+        val data = list[position]
         holder.champName.text = "챔피언 코드: "+data.championId.toString()
         holder.champLevel.text = "챔피언 레벨: "+data.championLevel.toString()
         holder.champPoints.text = "챔피언 포인트: "+data.championPoints.toString()
     }
 
     override fun getItemCount(): Int {
-        return List.size
+        return list.size
     }
 }
