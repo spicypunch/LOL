@@ -25,14 +25,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         presenter.getAPI(this)
     }
 
-    override fun getItem(response: Response<List<LOLResponseItem>>) {
-        if (response.isSuccessful) {
-            Toast.makeText(this@MainActivity, "데이터 가져오기 성공!", Toast.LENGTH_SHORT).show()
-            response.body()?.let { setUI(it as ArrayList<LOLResponseItem>) }
-        } else {
-            Toast.makeText(this@MainActivity, "데이터 가져오기 실패...", Toast.LENGTH_SHORT).show()
-        }
-    }
+//    override fun getItem(response: Response<List<LOLResponseItem>>) {
+//        if (response.isSuccessful) {
+//            Toast.makeText(this@MainActivity, "데이터 가져오기 성공!", Toast.LENGTH_SHORT).show()
+//            response.body()?.let { setUI(it as ArrayList<LOLResponseItem>) }
+//        } else {
+//            Toast.makeText(this@MainActivity, "데이터 가져오기 실패...", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 
     override fun setUI(lolData: ArrayList<LOLResponseItem>) {
         adapter.updateList(lolData)

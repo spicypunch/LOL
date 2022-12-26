@@ -6,7 +6,7 @@ import retrofit2.Response
 
 interface MainContract {
     interface View {
-        fun getItem(response: Response<List<LOLResponseItem>>)
+//        fun getItem(response: Response<List<LOLResponseItem>>)
         fun setUI(lolData: ArrayList<LOLResponseItem>)
     }
 

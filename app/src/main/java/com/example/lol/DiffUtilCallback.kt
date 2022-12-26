@@ -5,8 +5,7 @@ import com.example.lol.retrofit.LOLResponse.LOLResponseItem
 
 class DiffUtilCallback(
     private val oldList: MutableList<LOLResponseItem>,
-    private val newList: MutableList<LOLResponseItem>
-): DiffUtil.Callback() {
+    private val newList: MutableList<LOLResponseItem>): DiffUtil.Callback() {
         override fun getOldListSize(): Int = oldList.size
         override fun getNewListSize(): Int = newList.size
 
