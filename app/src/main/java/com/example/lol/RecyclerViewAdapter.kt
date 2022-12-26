@@ -3,8 +3,10 @@ package com.example.lol
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lol.databinding.ItemViewBinding
+import com.example.lol.patter.MainActivity
 import com.example.lol.retrofit.LOLResponse.LOLResponseItem
 
 class RecyclerViewAdapter() :
@@ -13,8 +15,13 @@ class RecyclerViewAdapter() :
     private val list = mutableListOf<LOLResponseItem>()
 
     fun updateList(items: MutableList<LOLResponseItem>) {
+        val diffCallback = DiffUtilCallback(list, items)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
         list.clear()
         list.addAll(items)
+
+        diffResult.dispatchUpdatesTo(this)
     }
 
     class MyViewHolder(binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -24,16 +31,17 @@ class RecyclerViewAdapter() :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding: ItemViewBinding = ItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: ItemViewBinding =
+            ItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = list[position]
-        holder.champName.text = "챔피언 코드: "+data.championId.toString()
-        holder.champLevel.text = "챔피언 레벨: "+data.championLevel.toString()
-        holder.champPoints.text = "챔피언 포인트: "+data.championPoints.toString()
+        holder.champName.text = "챔피언 코드: " + data.championId.toString()
+        holder.champLevel.text = "챔피언 레벨: " + data.championLevel.toString()
+        holder.champPoints.text = "챔피언 포인트: " + data.championPoints.toString()
     }
 
     override fun getItemCount(): Int {
