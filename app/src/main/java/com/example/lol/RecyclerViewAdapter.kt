@@ -1,13 +1,10 @@
 package com.example.lol
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lol.databinding.ItemViewBinding
-import com.example.lol.patter.MainActivity
 import com.example.lol.retrofit.LOLResponse.LOLResponseItem
 
 class RecyclerViewAdapter() : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
@@ -24,10 +21,9 @@ class RecyclerViewAdapter() : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHol
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class MyViewHolder(binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(val binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: LOLResponseItem) {
-            //이부분 오류
             binding.data = item
         }
     }

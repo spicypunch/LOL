@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        presenter.getAPI()
+        presenter.loadUserInfo()
     }
 
     override fun setUI(lolData: ArrayList<LOLResponseItem>) {
