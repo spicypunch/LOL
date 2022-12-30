@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -34,4 +35,3 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
-
