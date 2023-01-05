@@ -13,7 +13,7 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
         val retrofitAPI = RetrofitConnection.getInstance().create(LOLService::class.java)
         retrofitAPI.getInformation(
             //api 요청이 실패한다면 인증키 유효기간이 지났기 때문(인증키 유효기간 하루)
-            "RGAPI-a4a6c45c-e57c-4538-ba2d-cd91e90c6021"
+            "RGAPI-813c84b3-bc53-43ed-ab8e-3c2673058904"
         ).enqueue(object : Callback<List<LOLResponseItem>> {
             override fun onResponse(
                 call: Call<List<LOLResponseItem>>,

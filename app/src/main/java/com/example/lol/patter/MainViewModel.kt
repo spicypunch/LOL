@@ -11,29 +11,30 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel(private val view: MainContract.View): ViewModel(), MainContract.Presenter {
+class MainViewModel(): ViewModel() {
 
-    /*
-    private val _items = MutableLiveData<LOLResponseItem>()
-    val items: LiveData<LOLResponseItem>
+    private val _items = MutableLiveData<List<LOLResponseItem>>()
+    val items: LiveData<List<LOLResponseItem>>
         get() = _items
-     */
 
-    override fun loadUserInfo() {
+    private val _fail = MutableLiveData<Boolean>()
+    val fail: LiveData<Boolean>
+        get() = _fail
+
+    fun loadUserInfo() {
         val retrofitAPI = RetrofitConnection.getInstance().create(LOLService::class.java)
         retrofitAPI.getInformation(
             //api 요청이 실패한다면 인증키 유효기간이 지났기 때문(인증키 유효기간 하루)
-            "RGAPI-16988d2b-921b-4344-814b-ce6949bf2f63"
+            "RGAPI-813c84b3-bc53-43ed-ab8e-3c2673058904"
         ).enqueue(object : Callback<List<LOLResponseItem>> {
             override fun onResponse(
                 call: Call<List<LOLResponseItem>>,
                 response: Response<List<LOLResponseItem>>
             ) {
                 if (response.isSuccessful) {
-                    view.setToast("데이터 가져오기 성공!")
-                    response.body()?.let { view.setUI(it as ArrayList<LOLResponseItem>) }
+                    response.body()?.let { _items.value = it }
                 } else {
-                    view.setToast("데이터 가져오기 실패!")
+                    _fail .value = true
                 }
             }
 
