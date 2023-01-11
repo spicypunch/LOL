@@ -21,20 +21,26 @@ class MainViewModel(): ViewModel() {
     val fail: LiveData<Boolean>
         get() = _fail
 
+    init {
+        _items.value = listOf()
+        _fail.value = false
+    }
+
     fun loadUserInfo() {
         val retrofitAPI = RetrofitConnection.getInstance().create(LOLService::class.java)
         retrofitAPI.getInformation(
             //api 요청이 실패한다면 인증키 유효기간이 지났기 때문(인증키 유효기간 하루)
-            "RGAPI-813c84b3-bc53-43ed-ab8e-3c2673058904"
+            "RGAPI-2b51f374-0bac-43a2-a935-04082ffdbd30"
         ).enqueue(object : Callback<List<LOLResponseItem>> {
             override fun onResponse(
                 call: Call<List<LOLResponseItem>>,
                 response: Response<List<LOLResponseItem>>
             ) {
                 if (response.isSuccessful) {
+                    Log.e("api_test", _items.value.toString())
                     response.body()?.let { _items.value = it }
                 } else {
-                    _fail .value = true
+                    _fail.value = true
                 }
             }
 
