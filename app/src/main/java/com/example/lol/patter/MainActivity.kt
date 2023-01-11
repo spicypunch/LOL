@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(){
         viewModel.loadUserInfo()
 
         viewModel.items.observe(this, Observer {
-//            (binding.recyclerView.adapter as RecyclerViewAdapter).updateList(it as MutableList<LOLResponseItem>)
+            (binding.recyclerView.adapter as RecyclerViewAdapter).updateList(it)
         })
 
         viewModel.fail.observe(this, Observer {

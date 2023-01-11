@@ -13,8 +13,8 @@ import retrofit2.Response
 
 class MainViewModel(): ViewModel() {
 
-    private val _items = MutableLiveData<List<LOLResponseItem>>()
-    val items: LiveData<List<LOLResponseItem>>
+    private val _items = MutableLiveData<ArrayList<LOLResponseItem>>()
+    val items: LiveData<ArrayList<LOLResponseItem>>
         get() = _items
 
     private val _fail = MutableLiveData<Boolean>()
@@ -22,7 +22,7 @@ class MainViewModel(): ViewModel() {
         get() = _fail
 
     init {
-        _items.value = listOf()
+        _items.value = arrayListOf()
         _fail.value = false
     }
 
@@ -38,7 +38,7 @@ class MainViewModel(): ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     Log.e("api_test", _items.value.toString())
-                    response.body()?.let { _items.value = it }
+                    response.body()?.let { _items.value = it as ArrayList<LOLResponseItem> }
                 } else {
                     _fail.value = true
                 }
