@@ -30,7 +30,7 @@ class MainViewModel(): ViewModel() {
         val retrofitAPI = RetrofitConnection.getInstance().create(LOLService::class.java)
         retrofitAPI.getInformation(
             //api 요청이 실패한다면 인증키 유효기간이 지났기 때문(인증키 유효기간 하루)
-            "RGAPI-2b51f374-0bac-43a2-a935-04082ffdbd30"
+            "RGAPI-51ba6f6b-c589-4fc0-8ba6-3c3668761edd"
         ).enqueue(object : Callback<List<LOLResponseItem>> {
             override fun onResponse(
                 call: Call<List<LOLResponseItem>>,

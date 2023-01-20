@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity(){
         viewModel.fail.observe(this, Observer {
             if (viewModel.fail.value == true) {
                 Toast.makeText(this, "API 요청에 실패했습니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "가져오기 성공!", Toast.LENGTH_SHORT).show()
             }
         })
 
