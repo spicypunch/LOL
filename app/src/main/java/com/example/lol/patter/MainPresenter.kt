@@ -11,11 +11,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainPresenter(private val view: MainContract.View) : MainContract.Presenter {
-    override fun getAPI() {
+    override fun loadUserInfo() {
         val retrofitAPI = RetrofitConnection.getInstance().create(LOLService::class.java)
         retrofitAPI.getInformation(
             //api 요청이 실패한다면 인증키 유효기간이 지났기 때문(인증키 유효기간 하루)
-            "RGAPI-234bd782-0430-494d-936f-53a415960910"
+            "RGAPI-c2953966-ad8f-427a-9bd9-844cf9521cdf"
         ).enqueue(object : Callback<List<LOLResponseItem>> {
             override fun onResponse(
                 call: Call<List<LOLResponseItem>>,

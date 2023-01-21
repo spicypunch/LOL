@@ -12,6 +12,6 @@ interface MainContract {
     }
 
     interface Presenter {
-        fun getAPI()
+        fun loadUserInfo()
     }
 }
