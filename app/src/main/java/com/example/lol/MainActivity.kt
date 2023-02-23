@@ -17,14 +17,14 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: RecyclerViewAdapter
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val adapter by lazy { RecyclerViewAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.recyclerView
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
         getItem()
     }
 
@@ -52,13 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUI(lolData: ArrayList<LOLResponseItem>) {
-        Thread {
-            runOnUiThread {
-                adapter = RecyclerViewAdapter(lolData)
-                binding.recyclerView.adapter = adapter
-                binding.recyclerView.layoutManager = LinearLayoutManager(this)
-            }
-        }.start()
+        adapter.updateList(lolData)
     }
 }
 
