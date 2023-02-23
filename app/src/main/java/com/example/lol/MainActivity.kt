@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private fun getItem() {
         val retrofitAPI = RetrofitConnection.getInstance().create(LOLService::class.java)
         retrofitAPI.getInformation(
-            "RGAPI-6aed2e09-5f2f-4521-8171-5a5790c0cfe6"
+            "암호화된 ID 기입"
         ).enqueue(object : Callback<List<LOLResponseItem>> {
             override fun onResponse(
                 call: Call<List<LOLResponseItem>>,
