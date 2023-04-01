@@ -19,6 +19,7 @@ LOL 앱은 Retrofit을 사용하여 가져온 데이터를 Recyclerview에 적�
 <br>
 ### UI
 ---------
+
 ![image](https://user-images.githubusercontent.com/72846127/229265112-0c24abaf-78ba-43a8-9fb2-1d4d087c4532.gif)
 -  실행하고 데이터를 가져오는 데 성공하면 “데이터 가져오기 성공!” 이라는 Toast 메세지를 출력합니다.
 -  데이터를 가져오는 데 실패하면 “가져오기 실패” 라는 Toast 메세지를 출력합니다.
