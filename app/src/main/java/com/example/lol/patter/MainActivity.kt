@@ -16,13 +16,14 @@ import com.example.lol.retrofit.LOLResponse.LOLResponseItem
 class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
+    private val viewModel by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
+    }
     private val adapter by lazy { RecyclerViewAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
